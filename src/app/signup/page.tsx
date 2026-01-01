@@ -17,13 +17,6 @@ export default function SignupPage() {
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Verify Supabase URL before call
-        if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')) {
-            console.error("Supabase URL is not defined or is a placeholder.");
-            setError("Configuration error: Supabase link is missing.");
-            return;
-        }
-
         setLoading(true);
         setError(null);
 

@@ -6,7 +6,7 @@ import { Save, Terminal, Globe, ShieldCheck } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function AdminView() {
-    const [webhookUrl, setWebhookUrl] = useState('https://n8n.srv1185915.hstgr.cloud/webhook/...');
+    const [webhookUrl, setWebhookUrl] = useState(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || '');
     const [systemPrompt, setSystemPrompt] = useState('You are a helpful AI assistant...');
     const [isSaving, setIsSaving] = useState(false);
 
