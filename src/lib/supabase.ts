@@ -1,6 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 
+// Değişkenleri güvenli bir şekilde al
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// Eğer değişkenler boşsa Build aşamasında çökmemesi için kontrol et
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn("⚠️ Supabase environment variables are missing!");
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
